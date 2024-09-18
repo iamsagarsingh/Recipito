@@ -1,3 +1,3 @@
 # Recipito
 
-A Webapp for reciepies.
+A Webapp for recipies.

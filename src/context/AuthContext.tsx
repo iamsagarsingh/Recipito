@@ -1,6 +1,7 @@
-import { createContext, Dispatch, ReactNode, useContext, useReducer } from "react";
+import { useLocalStorage } from "@/hooks/useLocalStorage";
+import { createContext, Dispatch, ReactNode, useContext } from "react";
 
-interface DefaultStateTypes {
+export interface DefaultStateTypes {
     status: boolean,
     userData : null | {
         $id:string,
@@ -14,7 +15,7 @@ interface ContextType{
     dispatch: Dispatch<ActionType>
 }
 
-interface ActionType {
+export interface ActionType {
     type: string,
     payload: {
         $id:string,
@@ -50,7 +51,7 @@ const defaultState: DefaultStateTypes = {
 }
 
 export function AuthContextProvider({children}:{children:ReactNode}){
-    const [state,dispatch] = useReducer(reducer,defaultState)
+    const [state,dispatch] = useLocalStorage('user',reducer,defaultState)
     return <authContext.Provider value={{state,dispatch}}>
         {children}
     </authContext.Provider>

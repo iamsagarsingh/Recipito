@@ -10,6 +10,9 @@ export function AuthLayout({children}:{children:ReactNode}){
         if(!state.status){
             navigate('/signin')
         }
+        else{
+            navigate('/')
+        }
     },[state.status])
     
     return <>
